@@ -83,10 +83,22 @@ var operation = {
 
     switch (this.unary) {
       case 'square':
+        tmp = parseFloat(this.left)
+        tmp = tmp * tmp
         break
       case 'sqrt':
+        tmp = parseFloat(this.left)
+        if (tmp < 0) {
+          calculatorValue.clear()
+          calculatorValue.curValue = "Imaginary"
+          calculatorValue.writeValue()
+          return
+        }
+        tmp = Math.sqrt(tmp)
         break
       case '1 /':
+        tmp = parseFloat(this.left)
+        tmp = 1 / tmp
         break
     }
 
@@ -142,6 +154,7 @@ var operation = {
           this.unary = op
           this.left = $("#result").text()
         }
+        this.equals()
         break
       case '=':
         this.right = $("#result").text()
