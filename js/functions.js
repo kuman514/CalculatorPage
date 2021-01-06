@@ -30,7 +30,6 @@ var calculatorValue = {
           this.curValue = [this.curValue, num].join('')
         }
         break
-      default:
     }
     this.writeValue()
   },
@@ -159,7 +158,6 @@ var operation = {
       case '=':
         this.right = $("#result").text()
         this.equals()
-      default:
     }
     this.writeValue()
   },
