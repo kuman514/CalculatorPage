@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>kuman514's Calculator</title>
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/functions.js"></script>
     </head>
     <body>
         <div id="result">
@@ -11,33 +13,33 @@
         </div>
         <div id="buttons">
             <div class="button funcButton">%</div>
-            <div class="button funcButton">CE</div>
-            <div class="button funcButton">C</div>
-            <div class="button funcButton">Back</div>
+            <div class="button funcButton" onclick="calculatorValue.clear()">CE</div>
+            <div class="button funcButton" onclick="calculatorValue.clear()">C</div>
+            <div class="button funcButton" onclick="calculatorValue.erase()">Back</div>
 
             <div class="button funcButton">Invert</div>
             <div class="button funcButton">Square</div>
             <div class="button funcButton">Sqrt</div>
             <div class="button funcButton">/</div>
 
-            <div class="button numButton">7</div>
-            <div class="button numButton">8</div>
-            <div class="button numButton">9</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('7')">7</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('8')">8</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('9')">9</div>
             <div class="button funcButton">*</div>
 
-            <div class="button numButton">4</div>
-            <div class="button numButton">5</div>
-            <div class="button numButton">6</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('4')">4</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('5')">5</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('6')">6</div>
             <div class="button funcButton">-</div>
 
-            <div class="button numButton">1</div>
-            <div class="button numButton">2</div>
-            <div class="button numButton">3</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('1')">1</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('2')">2</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('3')">3</div>
             <div class="button funcButton">+</div>
 
             <div class="button numButton">+/-</div>
-            <div class="button numButton">0</div>
-            <div class="button numButton">.</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('0')">0</div>
+            <div class="button numButton" onclick="calculatorValue.appendNumber('.')">.</div>
             <div class="button resultButton">=</div>
         </div>
     </body>
