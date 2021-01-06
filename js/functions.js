@@ -78,6 +78,50 @@ var operation = {
     $("#operation").text([this.unary, this.left, this.oper, this.right].join(' '))
   },
 
+  equals: function () {
+    let tmp = 0
+
+    switch (this.unary) {
+      case 'square':
+        break
+      case 'sqrt':
+        break
+      case '1 /':
+        break
+    }
+
+    switch (this.oper) {
+      case '+':
+        tmp = parseFloat(this.left) + parseFloat(this.right)
+        break
+      case '-':
+        tmp = parseFloat(this.left) - parseFloat(this.right)
+        break
+      case '*':
+        tmp = parseFloat(this.left) * parseFloat(this.right)
+        break
+      case '/':
+        tmp = parseFloat(this.left) / parseFloat(this.right)
+        break
+    }
+
+    if (tmp < 0) {
+      calculatorValue.isNeg = true
+      tmp = -tmp
+    } else {
+      calculatorValue.isNeg = false
+    }
+
+    calculatorValue.curValue = String(tmp)
+    if (tmp == parseInt(calculatorValue.curValue)) {
+      calculatorValue.isDouble = false
+    } else {
+      calculatorValue.isDouble = true
+    }
+
+    calculatorValue.writeValue()
+  },
+
   getValues: function (op) {
     switch (op) {
       case '+': case '-': case '*': case '/':
@@ -86,7 +130,10 @@ var operation = {
           this.oper = op
           calculatorValue.clear()
         } else if (this.right !== '') {
-
+          this.reset()
+          this.left = $("#result").text()
+          this.oper = op
+          calculatorValue.clear()
         }
         break
       case 'square': case 'sqrt': case '1 /':
@@ -96,6 +143,9 @@ var operation = {
           this.left = $("#result").text()
         }
         break
+      case '=':
+        this.right = $("#result").text()
+        this.equals()
       default:
     }
     this.writeValue()
@@ -107,26 +157,5 @@ var operation = {
     this.oper = ''
     this.right = ''
     this.writeValue()
-  },
-
-  equals: function () {
-    switch (this.unary) {
-      case 'square':
-        return
-      case 'sqrt':
-        return
-      case '1 /':
-        return
-    }
-    switch (this.oper) {
-      case '+':
-        return
-      case '-':
-        return
-      case '*':
-        return
-      case '/':
-        return
-    }
   }
 }
